@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./templates:/etc/nginx/templates
+    ports:
+      - "8080:80"
+    environment:
+      - NGINX_HOST=quipo-maravilla.com
+      - NGINX_PORT=80
+    networks:
+      proyecto-aaron:
+        ipv4_address: 172.20.0.2
+  db:
+    image: mysql:latest
+    volumes:
+      - "./mysql/data:/var/lib/mysql"
+      - "./mysql/dump:/docker-entrypoint-initdb.d"
+    ports:
+      - "3306:3306"
+    environment:
+      TZ: UTC
+      MSQL_ROOT_PASSWORD: r00t_p4ssw0rd
+      MYSQL_DATABASE: db
+    networks:
+      proyecto-aaron:
+        ipv4_address: 172.20.0.3
+
+networks:
+  proyecto-aaron:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.20.0.1/24"
+
+
