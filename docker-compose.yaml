@@ -5,6 +5,7 @@ services:
     image: nginx:latest
     volumes:
       - ./templates:/etc/nginx/templates
+      - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
       - "8080:80"
     environment:
