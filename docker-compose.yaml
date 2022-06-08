@@ -31,12 +31,13 @@ services:
     volumes:
       - "./mysql/data:/var/lib/mysql"
       - "./mysql/dump:/docker-entrypoint-initdb.d"
+      - "./mysql.cnf:/etc/mysql/conf.d/mysql.cnf"
     ports:
       - "3306:3306"
     environment:
       TZ: UTC
       MYSQL_USER: user
-      MSQL_ROOT_PASSWORD: r00t_p4ssw0rd
+      MYSQL_PASSWORD: r00t_p4ssw0rd
       MYSQL_DATABASE: db
     networks:
       proyecto-aaron:
