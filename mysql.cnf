@@ -27,6 +27,3 @@
 # http://dev.mysql.com/doc/mysql/en/server-system-variables.html
 
 [mysql]
-
-[mysqld]
-bind-address = 172.20.0.3 

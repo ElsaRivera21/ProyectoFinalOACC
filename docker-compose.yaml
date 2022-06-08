@@ -36,9 +36,9 @@ services:
       - "3306:3306"
     environment:
       TZ: UTC
-      MYSQL_USER: user
-      MYSQL_PASSWORD: r00t_p4ssw0rd
+      MYSQL_ROOT_PASSWORD: r00t_p4ssw0rd
       MYSQL_DATABASE: db
+      MYSQL_ROOT_HOST: '%'
     networks:
       proyecto-aaron:
         ipv4_address: 172.20.0.4
