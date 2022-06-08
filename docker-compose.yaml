@@ -30,7 +30,7 @@ services:
     image: mysql:latest
     volumes:
       - "./mysql/data:/var/lib/mysql"
-      - "./mysql/dump:/docker-entrypoint-initdb.d"
+      - "./start.sql:/docker-entrypoint-initdb.d/setup.sql"
       - "./mysql.cnf:/etc/mysql/conf.d/mysql.cnf"
     ports:
       - "3306:3306"
