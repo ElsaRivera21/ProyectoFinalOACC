@@ -203,5 +203,45 @@ $app->get('/alumnos', function (Request $request, Response $response, array $arg
 
   return $newResponse;
 });
+	
+$app -> delete('/delete/{id}', function(Request $request, Response $response, array $args){
+    $conn = $this -> db;
+    $bd = $GLOBALS['db'];
+    $status_http = 200;
 
+    $id = $args['id'];
+    $data = $request -> getParsedBody();
+    $arrData = str_replace("'", "\"", $data);
+
+    $data = array();
+    $sql = "DELETE FROM {$bd}.usuarios WHERE id=:id";
+    $data['id'] = $id;
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($data);
+    $error = $conn->errorInfo();
+
+    if(intval($error[0] != 0)) {
+        $arr = array("error"=>array("code" => '230', "detail"=>"Error al eliminar {$error[1]}"));
+        $status_http = 401;
+    } else{
+        $arr = array("sucess"=>true, "detail"=>"Dato eliminado correctamente");
+    }
+
+    $response -> getBody() -> write(json_encode($arr, JSON_UNESCAPED_UNICODE));
+    $newResponse = $response -> withHeader(
+        'Content-Type', 'application/json; charset=UTF-8'
+    );
+
+    if ($status_http != 200) {
+      $newResponse = $response -> withStatus($status_http) -> withHeader(
+          'Content-Type', 'application/json; charset=UTF-8'
+      );
+    }
+
+    return $newResponse;
+});	
+	
 $app->run();
+
+
+
