@@ -8,4 +8,4 @@ CREATE TABLE IF NOT EXISTS usuarios
     `ap_materno` VARCHAR(60) NOT NULL
 );
 
-INSERT INTO usuarios (`username`) VALUES ('Aaron');
+INSERT INTO usuarios (username, nombre, ap_paterno, ap_materno) VALUES ('ProfeAaron', 'Aaron', 'Velasco', 'Agustin');
