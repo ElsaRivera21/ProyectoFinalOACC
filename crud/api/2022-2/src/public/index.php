@@ -24,6 +24,27 @@ $app = new \Slim\App([
   'settings' => $config
 ]);
 
+$app->options('/{routes:.+}', function ($request, $response, $args) {
+  return $response;
+});
+
+$app->add(function ($req, $res, $next) {
+  $response = $next($req, $res);
+  return $response
+    ->withHeader('Access-Control-Allow-Origin', '*')
+    ->withHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+    ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+}); 
+
+$container = $app->getContainer();
+$container['db'] = function ($c) {
+  $db = $c['settings']['db'];
+  $pdo = new PDO("{$db['dbms']}:host={$db['host']};dbname={$db['dbname']};charset=utf8", $db['user'], $db['pass']);
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+  return $pdo;
+};
+
 $app->post('/registro', function (Request $request, Response $response, array $args) {
   $conn = $this->db;
   $bd = $GLOBALS['db'];
@@ -99,48 +120,6 @@ $app->post('/registro', function (Request $request, Response $response, array $a
 
 
   return $newResponse;
-});
-
-$app -> post('/post', function(Request $request, Response $response, array $args){
-    $conn = $this -> db;
-    $bd = $GLOBALS['db'];
-    $status_http = 200;
-
-    $data = $request -> getParsedBody();
-    $arrData = str_replace("'", "\"", $data);
-
-    #$token = $arrData['token'];
-    #$arrTk = validaToken($token, $bd, $conn);
-    $data = array();
-    echo ia($arrData); exit;
-    $sql = "INSERT INTO {$bd}.usuarios SET username=:username";
-
-    #$sql .= "fedita=:fedita";
-    #$data['fedita'] = date("Y-m-d H:i:s");
-    $data['username'] = $arrData['username'];
-    $stmt = $conn->prepare($sql);
-    $stmt->execute($data);
-    $error = $conn->errorInfo();
-    if(intval($error[0] != 0)){
-        $arr = array("error"=>array("code" => '230', "detail"=>"Error al insertar {$error[1]}"));
-        $status_http = 401;
-    }else{
-        $arr = array("sucess"=>true, "detail"=>"Datos insertados correctamente");
-    }
-    #$arr = array("sucess" => true, "meta" => $metadata, "data" => $rs);
-
-    $response -> getBody() -> write(json_encode($arr, JSON_UNESCAPED_UNICODE));
-    $newResponse = $response -> withHeader(
-        'Content-Type', 'application/json; charset=UTF-8'
-    );
-
-    if ($status_http != 200) {
-      $newResponse = $response -> withStatus($status_http) -> withHeader(
-          'Content-Type', 'application/json; charset=UTF-8'
-      );
-    }
-
-    return $newResponse;
 });
 
 $app->run();
