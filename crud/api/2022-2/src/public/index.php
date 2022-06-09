@@ -239,6 +239,85 @@ $app -> delete('/delete/{id}', function(Request $request, Response $response, ar
     }
 
     return $newResponse;
+});
+
+$app->put('/alumnos/{id}', function (Request $request, Response $response, array $args) {
+  $conn = $this->db;
+  $bd = $GLOBALS['db'];
+
+  $id = $args['id'];
+
+  $http_status = 200;
+  $data = $request->getParsedBody();
+  $arrData = str_replace("'", "\"", $data);
+
+  $sql = "SELECT * FROM {$bd}.usuarios WHERE id = {$id} ";
+  $rs = query($sql, $conn);
+
+  if (count($rs) == 0) {
+    $arr = array(
+      "error" => array(
+        "code" => 228,
+        "detail" => "usuario no registrado"
+      )
+    );
+  } else {
+    $valido = true;
+    $arr_empty = array();
+
+    foreach ($GLOBALS['arr_campos_usuarios_nn'] as $k => $v) {
+      if (empty($arrData[$v])) {
+        $arr_empty[$v] = "no puede ser nulo";
+        $valido = false;
+      }
+    }
+
+    if ($valido) {
+      $data = array();
+      $sql = "UPDATE usuarios SET\n";
+      foreach ($GLOBALS['arr_campos_usuarios'] as $k => $v) {
+        if (isset($arrData[$v])) {
+          $data[$v] = $arrData[$v];
+          $sql .= "{$v}=:{$v},\n";
+        }
+      }
+      $sql = substr($sql, 0, -2) . ";";
+      $arr = array(
+        "success" => true,
+        "detail" => "alumno actualizado"
+      );
+      $stmt = $conn->prepare($sql);
+      $stmt->execute($data);
+      $error = $conn->errorInfo();
+      if (intval($error[0] != 0)) {
+        $arr = array("error" => array(
+          "code" => '230',
+          'detail' => 'Error al actualizar {$error[1]}'
+        ));
+        $status_http = 401;
+      }
+    } else {
+      $arr = array(
+        "error" => array(
+          "code" => 230,
+          "detail" => $arr_empty
+        )
+      );
+    }
+  }
+
+  $response->getBody()->write(json_encode($arr, JSON_UNESCAPED_UNICODE));
+
+  if ($http_status != 200) {
+    $newResponse = $response->withStatus($http_status);
+  }
+
+  $newResponse = $response->withHeader(
+    'Content-Type',
+    'application/json; charset=UTF-8'
+  );
+
+  return $newResponse;
 });	
 	
 $app->run();
