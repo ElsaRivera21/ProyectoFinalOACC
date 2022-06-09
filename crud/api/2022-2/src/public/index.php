@@ -126,4 +126,33 @@ $app->post('/registro', function (Request $request, Response $response, array $a
   return $newResponse;
 });
 
+$app -> get('/get', function(Request $request, Response $response, array $args){
+    $conn = $this -> db;
+    #$bd = $GLOBALS['db'];
+    $status_http = 200;
+
+    $data = $request -> getQueryParams();
+    $arrData = str_replace("'", """, $data);
+
+    $sql = "SELECT * FROM usuarios";
+    $rs = query($sql, $conn);
+
+    $metadata["items"] = count($rs);
+    $arr = array("sucess" => true, "meta" => $metadata, "data" => $rs);
+
+    $response -> getBody() -> write(json_encode($arr, JSON_UNESCAPED_UNICODE));
+    $newResponse = $response -> withHeader(
+        'Content-Type', 'application/json; charset=UTF-8'
+    );
+
+    if ($status_http != 200) {
+      $newResponse = $response -> withStatus($status_http) -> withHeader(
+          'Content-Type', 'application/json; charset=UTF-8'
+      );
+    }
+
+    return $newResponse;
+});
+
+
 $app->run();
