@@ -154,5 +154,54 @@ $app -> get('/get', function(Request $request, Response $response, array $args){
     return $newResponse;
 });
 
+$app->get('/alumnos', function (Request $request, Response $response, array $args) {
+  $conn = $this->db;
+  $bd = $GLOBALS['bd'];
+
+  $http_status = 200;
+  $data = $request->getQueryParams();
+  $arrData = str_replace("'","\"", $data);
+
+  if (!empty($arrData['nombre'])) {
+    $whereNombre = " AND(
+        CONCAT_WS(' ', ap_paterno, ap_materno, nombre) LIKE '%{$arrData['nombre']}%' 
+        OR CONCAT_WS(' ', nombre, ap_paterno, ap_materno) LIKE '%{$arrData['nombre']}%'
+    )";
+  }
+
+  if (!empty($arrData['ap_paterno'])) {
+    $wherePaterno = " AND matricula = {$arrData['ap_paterno']}";
+  }
+
+  if (!empty($arrData['ap_materno'])) {
+    $whereMaterno = " AND grado LIKE '%{$arrData['ap_materno']}%'";
+  }
+
+  if (!empty($arrData['username'])) {
+    $whereUser = " AND username = '{$arrData['username']}'";
+  }
+
+  $sql = "SELECT * 
+    FROM usuarios
+    WHERE 1=1{$wherePaterno}{$whereMaterno}{$whereUser}{$whereNombre}";
+
+  $rs = query($sql, $conn);
+
+  $metadata["items"] = count($rs);
+  $arr = array("success" => true, "meta" => $metadata, "data" => $rs);
+
+  $response->getBody()->write(json_encode($arr, JSON_UNESCAPED_UNICODE));
+
+  if ($http_status != 200) {
+    $newResponse = $response->withStatus($http_status);
+  }
+
+  $newResponse = $response->withHeader(
+    'Content-Type',
+    'application/json; charset=UTF-8'
+  );
+
+  return $newResponse;
+});
 
 $app->run();
