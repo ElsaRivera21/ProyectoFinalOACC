@@ -1,5 +1,5 @@
 <?php
-#Karel Pacheco Ramírez
+
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
@@ -75,9 +75,13 @@ $app->post('/registro', function (Request $request, Response $response, array $a
     } else {
       $data = [
         'username' => $arrData['username'],
+        'nombre' => $arrData['nombre'],
+        'ap_paterno' => $arrData['ap_paterno'],
+        'ap_materno' => $arrData['ap_materno']
       ];
-      $sql = "INSERT INTO {$bd}.usuarios 
-          SET username=:username;";
+      $sql = "INSERT INTO {$bd}.usuarios
+          SET username=:username, nombre=:nombre, ap_paterno=:ap_paterno, ap_materno=:ap_materno;";
+	
       $stmt = $conn->prepare($sql);
       $stmt->execute($data);
       $error = $conn->errorInfo();
