@@ -132,7 +132,7 @@ $app -> get('/get', function(Request $request, Response $response, array $args){
     $status_http = 200;
 
     $data = $request -> getQueryParams();
-    $arrData = str_replace("'", """, $data);
+    $arrData = str_replace("'", "\"", $data);
 
     $sql = "SELECT * FROM usuarios";
     $rs = query($sql, $conn);
