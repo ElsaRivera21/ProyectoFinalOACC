@@ -24,23 +24,77 @@ crear la maquina virtual fueron:
 3. Seleccionamos el tamaño de la memoria RAM (recomendamos asignarle como mínimo 2500 MB).
 
 ![3](readme_img/3.png)
+
+4. Seleccionamos la opción "Crear un disco duro virtual ahora".
+
 ![4](readme_img/4.png)
+
+5. Seleccionamos la opción "VDI (VirtualBox Disk Image).
+
 ![5](readme_img/5.png)
+
+6. Seleccionamos el almacenamiento de disco duro como "Reservado dinámicamente".
+
 ![6](readme_img/6.png)
+
+7. Y seleccionamos el tamaño del mismo.
+
 ![7](readme_img/7.png)
+
+8. Posteriormente damos click en "Configuración".
+
 ![8](readme_img/8.png)
+
+9. En primer lugar, seleccionamos el apartado de "Sistema" y en la pestaña "Procesador" seleccionamos 4CPUs (se recomienda tener la mitad de lo que se tiene en cada computadora).
+
 ![9](readme_img/9.png)
+
+10. En el apartado de "Pantalla" asignamos 128 MB a la memoría de video.
+
 ![10](readme_img/10.png)
+
+11. En el apartado de "Almacenamiento" en el disco marcado seleccionamos la imagen del sistema operativo que se desea. En este caso se seleccionó Ubuntu.
+
 ![11](readme_img/11.png)
+
+12. En el apartado de "Red" marcamos la opción "Habilitar adaptador de red" conectado a "Adaptador Puente".
+
 ![12](readme_img/12.png)
+
+13. Damos click en "Iniciar".
+
 ![13](readme_img/13.png)
+
+14. Seleccionamos el idioma de preferencia y damos click en la opción "Instalar Ubuntu".
+
 ![14](readme_img/14.png)
+
+15. Seleccionamos la distribución de teclado de preferencia.
+
 ![15](readme_img/15.png)
+
+16. Seleccionamos "Instalación mínima" y marcamos las dos opciones de la parte de abajo. (En este caso con la instalación mínima nos fue suficiente, pero si se desea se puede seleccionar la instalación normal).
+
 ![16](readme_img/16.png)
+
+17. En el tipo de instalación seleccionamos la opción "Borrar disco e instalar Ubuntu".
+
 ![17](readme_img/17.png)
+
+18. Damos en la opción continuar, ya que aquí nos muestra un mensaje de las particiones que se realizarán en el disco duro.
+
 ![18](readme_img/18.png)
+
+19. Seleccionamos el país o región en donde nos encontramos.
+
 ![19](readme_img/19.png)
+
+20. Aquí personalizamos la nueva computadora asignando las credenciales necesarias.
+
 ![20](readme_img/20.png)
+
+Y listo, esperamos a que termine de instalar Ubuntu.
+
 ![21](readme_img/21.png)
 
 ### Instalación de docker
