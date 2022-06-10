@@ -374,5 +374,10 @@ curl -i -k -X DELETE http://localhost/delete/4
 En primer lugar comprimimos el proyecto con el comando: 
 ```tar -zcvf ProyectoFinalOACC.tar.gz ProyectoFinalOACC/```
 
-![zip del proyecto](readme_img/zip del proyecto.png)
+![zip_del_proyecto](readme_img/zip_del_proyecto.png)
+
+Posteriormente, realizamos los siguientes pasos:
+* Generación de un hash con el sha256 el cual lo guardamos en el archivo *firma_sha256.txt* con el comando: ```shasum -a 256 ProyectoFinalOACC.tar.gz > firma_sha256.txt```
+* Comprobamos la integridad del proyecto y lo guardamos en el archivo *integridad_proyecto.txt* con el comando: ```shasum -a 256 ProyectoFinalOACC.tar.gz e40b6ff2866d8a7f573d8598c826fefe8866467eefd669721898237bf78f28a2 ProyectoFinalOACC.tar.gz > integridad_proyecto.txt```
+
 ![integridad_del_proyecto](readme_img/integridad_del_proyecto.png)
