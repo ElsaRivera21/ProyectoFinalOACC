@@ -136,6 +136,8 @@ que el script para crear la base de datos *solo se ejecuta al crear el volumen d
 mysql*, si se quiere probar el funcionamiento del script, es necesario
 borrar el volumen con `sudo rm -rf mysql`.
 
+![compose](readme_img/compose.png)
+
 ### Script de mysql
 
 ```mysql
@@ -189,6 +191,8 @@ Para poder iniciar el contenedor, solo es necesario correr el comando
 `sudo docker-compose up -d` en la carpeta donde se encuentra el archivo
 `docker-compose.yaml`
 
+![compose](readme_img/compose.png)
+
 ### Utilizando git
 
 Como github eliminó la habilidad de empujar cambios al repositorio
@@ -199,15 +203,22 @@ Para crear un par de llaves ssh, es necesario correr el comando
 `ssh-keygen` y seguir las instrucciones en pantalla, después de eso,
 hay que obtener el contenido del archivo con la terminación `.pub`
 
+![keygen](readme_img/ssh_keygen.png)
+
 Una vez hecho esto, es necesario ir a `github.com`, iniciar sesión,
 ir a tu configuración y a llaves SSH y GPG, y añadir nueva llave,
 aquí copiamos el contenido del archivo `.pub`.
+
+![config](readme_img/git_config.png)
+![ssh_gpg](readme_img/ssh_gpg.png)
 
 ### Subiendo cambios
 
 Para crear la rama con nuestro nombre, solo es necesario correr el
 comando `git checkout -b <nombre>`, para cambiar entre ramas,
 se corre el mismo comando, pero sin la bandera `-b`
+
+![checkout](readme_img/checkout.png)
 
 Si hay cambios que no tenemos localmente, es necesario correr el
 comando `git pull`, para obtener los cambios específicos de una
@@ -220,6 +231,8 @@ Después se corre el comando `git commit -m "mensaje"` para crear
 un commit. Este proceso se puede repetir varias veces de manera local,
 una vez estemos listos para subir nuestros cambios al repositorio,
 se utiliza el comando `git push origin <rama>`
+
+![git](readme_img/git.png)
 
 ### Probando la API
 
@@ -239,13 +252,19 @@ curl -i -k -X POST -H 'Content-Type: application/json' -d '{
   }' http://localhost/registro
 ```
 
+![registro](readme_img/registro.png)
+
 ```bash
 curl -i -k -X GET http://localhost/get
 ```
 
+![get](readme_img/get.png)
+
 ```bash
 curl -i -k -X GET http://localhost/alumnos\?nombre=Paola
 ```
+
+![alumnos?nombre](readme_img/alumnos?nombre.png)
 
 ```bash
 curl -i -k -X PUT -H 'Content-Type: application/json' -d '{
@@ -256,6 +275,10 @@ curl -i -k -X PUT -H 'Content-Type: application/json' -d '{
   }' http://localhost/alumnos/4
 ```
 
+![alumnos](readme_img/alumnos.png)
+
 ```bash
 curl -i -k -X DELETE http://localhost/delete/4
 ```
+
+![delete](readme_img/delete.png)
