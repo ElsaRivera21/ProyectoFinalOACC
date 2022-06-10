@@ -13,7 +13,12 @@ Para poder utilizar docker, la mayoría de los integrantes tuvieron que crear
 una máquina virtual, ya sea ubuntu o basada en ubuntu, los pasos para
 crear la maquina virtual fueron:
 
+1. Utilizamos como software "VirtualBox" de Oracle; una vez ingresados a este damos click en "Nueva" para crear una nueva máquina virtual.
+
 ![1](readme_img/1.png)
+
+2. Nombramos a nuestra máquina virtual, seleccionamos la ubicación y el tipo de sistema operativo con el que la máquina va a funcionar.
+
 ![2](readme_img/2.png)
 ![3](readme_img/3.png)
 ![4](readme_img/4.png)
