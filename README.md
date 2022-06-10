@@ -350,7 +350,7 @@ curl -i -k -X GET http://localhost/get
 curl -i -k -X GET http://localhost/alumnos\?nombre=Paola
 ```
 
-![alumnos?nombre](readme_img/alumnos?nombre.png)
+![alumnos_nombre](readme_img/alumnos_nombre.png)
 
 ```bash
 curl -i -k -X PUT -H 'Content-Type: application/json' -d '{
