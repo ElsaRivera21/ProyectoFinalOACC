@@ -20,6 +20,9 @@ crear la maquina virtual fueron:
 2. Nombramos a nuestra máquina virtual, seleccionamos la ubicación y el tipo de sistema operativo con el que la máquina va a funcionar.
 
 ![2](readme_img/2.png)
+
+3. Seleccionamos el tamaño de la memoria RAM (recomendamos asignarle como mínimo 2500 MB).
+
 ![3](readme_img/3.png)
 ![4](readme_img/4.png)
 ![5](readme_img/5.png)
