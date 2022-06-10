@@ -375,3 +375,4 @@ En primer lugar comprimimos el proyecto con el comando:
 ```tar -zcvf ProyectoFinalOACC.tar.gz ProyectoFinalOACC/```
 
 ![zip del proyecto](readme_img/zip del proyecto.png)
+![integridad_del_proyecto](readme_img/integridad_del_proyecto.png)
