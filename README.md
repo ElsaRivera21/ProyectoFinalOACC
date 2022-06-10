@@ -13,6 +13,28 @@ Para poder utilizar docker, la mayoría de los integrantes tuvieron que crear
 una máquina virtual, ya sea ubuntu o basada en ubuntu, los pasos para
 crear la maquina virtual fueron:
 
+![1](readme_img/1.png)
+![2](readme_img/2.png)
+![3](readme_img/3.png)
+![4](readme_img/4.png)
+![5](readme_img/5.png)
+![6](readme_img/6.png)
+![7](readme_img/7.png)
+![8](readme_img/8.png)
+![9](readme_img/9.png)
+![10](readme_img/10.png)
+![11](readme_img/11.png)
+![12](readme_img/12.png)
+![13](readme_img/13.png)
+![14](readme_img/14.png)
+![15](readme_img/15.png)
+![16](readme_img/16.png)
+![17](readme_img/17.png)
+![18](readme_img/18.png)
+![19](readme_img/19.png)
+![20](readme_img/20.png)
+![21](readme_img/21.png)
+
 ### Instalación de docker
 
 Para poder utilizar docker, es necesario instalar los paquetes `docker.io`
