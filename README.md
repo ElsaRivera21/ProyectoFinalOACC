@@ -191,7 +191,7 @@ Para poder iniciar el contenedor, solo es necesario correr el comando
 `sudo docker-compose up -d` en la carpeta donde se encuentra el archivo
 `docker-compose.yaml`
 
-![compose](readme_img/compose.png)
+![run](readme_img/run.png)
 
 ### Utilizando git
 
