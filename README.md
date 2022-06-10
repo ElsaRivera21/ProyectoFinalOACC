@@ -178,6 +178,8 @@ que es donde se encuentra nuestra api
 
 Esta es la estructura del proyecto de xampp
 
+![tree](readme_img/tree.png)
+
 En la carpeta public se encuentra el archivo `index.php`, que es el
 que se encarga de ejecutar las llamadas a la API CRUD, la carpeta
 vendor tiene varias librerias necesarias para nuestro proyecto,
