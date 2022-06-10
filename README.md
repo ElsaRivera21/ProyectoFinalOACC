@@ -368,3 +368,7 @@ curl -i -k -X DELETE http://localhost/delete/4
 ```
 
 ![delete](readme_img/delete.png)
+
+### Integridad del proyecto
+
+En primer lugar comprimimos el proyecto con el comando: ```tar -zcvf ProyectoFinalOACC.tar.gz ProyectoFinalOACC/```
